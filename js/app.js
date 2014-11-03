@@ -11,7 +11,7 @@ angular.module('myApp', [])
 		$scope.calc.num2 = 2;
 
 		$scope.resetCalculator = function(){
-		$scope.calc.num1 = 0;
-		$scope.calc.num2 = 0;
+			$scope.calc.num1 = 0;
+			$scope.calc.num2 = 0;
 		}
 	});
