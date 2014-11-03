@@ -8,13 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/ngDialog.css">
+        <link rel="stylesheet" href="css/ngDialogDefault.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body ng-app="myApp">
 
-        <div class="container-fluid">
+        <div class="container-fluid" ng-controller="myPerson">
             <div class="row">
-                <div class="col-xs-12" ng-controller="myPerson">
+                <div class="col-xs-12">
                     <label>Name <input type="text" ng-model="person.name" class="form-control" /></label>
                     <label>Avatar 
                         <select ng-model="person.image" class="form-control">
@@ -31,6 +33,10 @@
                         <h3>{{person.name}}</h3>
                         <p>{{person.description}}</p>
                     </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <input type="button" value="Show dialog" ng-click="openDialog()" />
                 </div>
             </div>
         </div>

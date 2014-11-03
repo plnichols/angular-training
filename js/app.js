@@ -4,9 +4,10 @@ angular.module('myApp', ['ngDialog'])
 		$scope.person.description = "This is my name and an image representing me!";
 		$scope.person.image = "default-avatar";
 
-		ngDialog.open({
-			template: '<p>my template</p>',
-			className: 'ngdialog-theme-plain',
-			plain: true
-		});
+		$scope.openDialog = function(){
+			ngDialog.open({
+				template: '<p>my template</p>',
+				plain: true
+			});
+		}
 	}]);
