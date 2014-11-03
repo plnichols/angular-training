@@ -7,37 +7,31 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body ng-app>
 
-        <fieldset>
-            <legend>Title</legend>
-            <h1>{{title}}</h1>
-            <input type="text" ng-model="title" />
-        </fieldset>
+        <label for="showForm">
+            Show avatar form
+            <input type="checkbox" value="true" ng-model="showForm">
+        </label>
 
-        <fieldset>
-            <legend>Calculator</legend>
-            <h1>{{num1 + num2}}</h1>
-            <input type="number" ng-model="num1" />
-            <input type="number" ng-model="num2" />
-        </fieldset>
+        <form action="" ng-show="showForm">
+            <fieldset>
+                <legend>Name</legend>
+                <input type="text" ng-model="name" />
+            </fieldset>
 
-        <fieldset>
-            <legend>Name</legend>
-            <h1>{{name}}</h1>
-            <input type="text" ng-model="name" />
-        </fieldset>
-
-        <fieldset>
-            <legend>Avatar</legend>
-            /images/ 
-            <input type="text" ng-model="avatarUrl" />
-            <input type="button" value="Show avatar" ng-click="showAvatar = true" />
-            <br>
-            <img src="images/{{avatarUrl}}" title="{{name}}" alt="{{name}}" ng-show="showAvatar == true">
-        </fieldset>
+            <fieldset>
+                <legend>Avatar</legend>
+                /images/ 
+                <input type="text" ng-model="avatarUrl" />
+                <input type="button" value="Show avatar" ng-click="showAvatar = true" />
+                <br>
+                <img src="images/{{avatarUrl}}.png" title="{{name}}" alt="{{name}}" ng-show="showAvatar == true">
+            </fieldset>
+        </form>
 
         <!-- Scripts -->
         <script src="js/angular.js"></script>
