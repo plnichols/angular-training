@@ -10,30 +10,75 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body ng-app>
+    <body ng-app="myApp">
 
-        <label for="showForm">
-            Show avatar form
-            <input type="checkbox" value="true" ng-model="showForm">
-        </label>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6" ng-controller="myPerson">
 
-        <form action="" ng-show="showForm">
-            <fieldset>
-                <legend>Name</legend>
-                <input type="text" ng-model="name" />
-            </fieldset>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="true" ng-model="hideForm"> Hide avatar
+                        </label>
+                    </div>
 
-            <fieldset>
-                <legend>Avatar</legend>
-                /images/ 
-                <input type="text" ng-model="avatarUrl" />
-                <input type="button" value="Show avatar" ng-click="showAvatar = true" />
-                <br>
-                <img src="images/{{avatarUrl}}.png" title="{{name}}" alt="{{name}}" ng-show="showAvatar == true">
-            </fieldset>
-        </form>
+                    <br>
+                    <br>
+
+                    <form action="" ng-hide="hideForm">
+                        <fieldset>
+                            <legend>Name</legend>
+                            <input type="text" ng-model="person.name" class="form-control" />
+                        </fieldset>
+
+                        <fieldset class="form-inline">
+                            <legend>Avatar</legend>
+                            /images/ 
+                            <input type="text" ng-model="person.image" class="form-control" />
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Result</legend>
+                            <img class="pull-left" width="100" src="images/{{person.image}}.png" title="{{person.name}}" alt="{{person.name}}">
+                            <h3>{{person.name}}</h3>
+                            <p>{{person.description}}</p>
+                        </fieldset>
+                    </form>
+                    
+                </div>
+
+                <div class="col-xs-6" ng-controller="myCalculator">
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="true" ng-model="hideCalculator"> Hide calculator
+                        </label>
+                    </div>
+
+                    <br>
+                    <br>
+                    
+                    <form action="" ng-hide="hideCalculator" class="form">
+                        <fieldset>
+                            <legend>Calculator</legend>
+                            <p>
+                                <input type="number" ng-model="calc.num1" class="form-control" />
+                                <input type="number" ng-model="calc.num2" class="form-control" />
+                            </p>
+                            <input type="button" ng-click="resetCalculator()" value="Reset" class="btn btn-default" />
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Result</legend>
+                            <h3>{{calc.num1 + calc.num2}}</h3>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <!-- Scripts -->
         <script src="js/angular.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
