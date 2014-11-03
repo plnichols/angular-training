@@ -5,3 +5,7 @@ body {
 fieldset {
 	margin-bottom: 40px;
 }
+
+img.pull-left {
+	margin: 0 10px 10px 0;
+}
