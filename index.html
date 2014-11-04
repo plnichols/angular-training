@@ -16,27 +16,17 @@
             }
         </style>
     </head>
-    <body ng-app="myApp">
+    <body ng-app="myApp" ng-controller="myFlickrFeed">
 
-        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Filter by">
-        <br>
-        <select name="sortTerm" class="form-control" ng-model="sortTerm">
-            <option value="">Sort by</option>
-            <option value="name">Name</option>
-            <option value="email">Email</option>
-            <option value="country">Country</option>
-        </select>
+        <h1>Flickr API</h1>
+
+        <input type="text" class="form-control" ng-model="searchTerm" ng-model-options="{debounce:2000}" placeholder="Filter by">
 
         <br>
-
-        <table class="table" ng-controller="myPeople">
-            <tr ng-repeat="person in people | filter:searchTerm | orderBy:sortTerm">
-                <td>{{$index}}</td>
-                <td>{{person.name}}</td>
-                <td>{{person.email}}</td>
-                <td>{{person.country}}</td>
-            </tr>
-        </table>
+        
+        <div class="flickr">
+            <img ng-repeat="image in images" class="flickr__item" src="{{image.media.m}}" alt="{{image.title}}" title="{{image.title}}" />
+        </div>
 
         <!-- Scripts -->
         <script src="js/libs/angular.js"></script>

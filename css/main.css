@@ -9,3 +9,9 @@ fieldset {
 img.pull-left {
 	margin: 0 10px 10px 0;
 }
+
+.flickr__item {
+	display: inline-block;
+	width: 23%;
+	margin: 0 1% 1% 0;
+}
