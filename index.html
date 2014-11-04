@@ -18,25 +18,37 @@
     </head>
     <body ng-app="myApp">
 
-        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Filter by">
-        <br>
-        <select name="sortTerm" class="form-control" ng-model="sortTerm">
-            <option value="">Sort by</option>
-            <option value="name">Name</option>
-            <option value="email">Email</option>
-            <option value="country">Country</option>
-        </select>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div ng-controller="myTabs">
+                        <ul class="list">
+                            <li ng-click="switchTabs('home')"><a href="">Home</a></li>
+                            <li ng-click="switchTabs('css')"><a href="">CSS</a></li>
+                            <li ng-click="switchTabs('js')"><a href="">JS</a></li>
+                            <li ng-click="switchTabs('html')"><a href="">HTML</a></li>
+                        </ul>
 
-        <br>
+                        <fieldset>
+                            <legend>{{tabName}}</legend>
+                            <div ng-include="'templates/' + tab.name + '.html'">No content loaded yet...</div>
+                        </fieldset>
+                    </div>
+                </div>
 
-        <table class="table" ng-controller="myPeople">
-            <tr ng-repeat="person in people | filter:searchTerm | orderBy:sortTerm">
-                <td>{{$index}}</td>
-                <td>{{person.name}}</td>
-                <td>{{person.email}}</td>
-                <td>{{person.country}}</td>
-            </tr>
-        </table>
+
+                <div class="col-sm-6">
+                    <ul>
+                        <li><input type="radio" value="home" ng-model="showTabs">Home</li>
+                        <li><input type="radio" value="css" ng-model="showTabs">CSS</li>
+                        <li><input type="radio" value="js" ng-model="showTabs">JS</li>
+                        <li><input type="radio" value="html" ng-model="showTabs">HTML</li>
+                    </ul>
+                    <article ng-show="showTabs"> <div ng-include="'/templates/'+ showTabs +'.html'"></div> </article>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Scripts -->
         <script src="js/libs/angular.js"></script>
