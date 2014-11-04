@@ -2,20 +2,18 @@ describe("Unit Test: myPeople", function() {
 
 	beforeEach(module('myApp'));
 
-	var ctrl, scope;
+	var ctrl, scope, httpBackend;
 
-	beforeEach(inject(function($controller, $rootScope) {
+	beforeEach(inject(function($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
-		ctrl = $controller('myPeople', {
-			$scope: scope
-		});
+		httpBackend = $httpBackend;
+    	controllerService = $controller;
 	}));
 
 	it("should return a people object in the scope", function() {
-		expect(scope.people).not.toBe(null);
-	});
-
-	it("should return a people object with 15 items", function() {
-		expect(scope.people.length).toEqual(15);
+	    httpBackend.expectGET('ajax/people.json').respond([]);
+	    ctrl = controllerService('myPeople', {$scope: scope});
+	    httpBackend.flush();
+	    expect(scope.people).toEqual([]);
 	});
 });
