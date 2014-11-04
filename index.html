@@ -16,10 +16,8 @@
             }
         </style>
     </head>
-    <body ng-app="myApp">
+    <body ng-app="myApp" ng-controller="myReddit">
 
-        <input type="text" class="form-control" ng-model="searchTerm" placeholder="Filter by">
-        <br>
         <select name="sortTerm" class="form-control" ng-model="sortTerm">
             <option value="">Sort by</option>
             <option value="name">Name</option>
@@ -29,12 +27,11 @@
 
         <br>
 
-        <table class="table" ng-controller="myPeople">
-            <tr ng-repeat="person in people | filter:searchTerm | orderBy:sortTerm">
+        <table class="table">
+            <tr ng-repeat="item in reddit | minVote:2">
                 <td>{{$index}}</td>
-                <td>{{person.name}}</td>
-                <td>{{person.email}}</td>
-                <td>{{person.country}}</td>
+                <td>{{item.comment}}</td>
+                <td>{{item.votes}}</td>
             </tr>
         </table>
 
