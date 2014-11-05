@@ -7,7 +7,7 @@ angular.module('myApp', [])
 						  },
 						  {
 						    comment: "I'm not so sure about edam though",
-						    votes: -2
+						    votes: 2
 						  },
 						  {
 						    comment: "Gouda properly rocks!",
@@ -15,11 +15,11 @@ angular.module('myApp', [])
 						  },
 						  {
 						    comment: "I quite like a bit of mild cheddar",
-						    votes: -19
+						    votes: 19
 						  },
 						  {
 						    comment: "Cheese is just old milk",
-						    votes: -8
+						    votes: 8
 						  }
 						];
 	})
