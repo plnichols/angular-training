@@ -1,34 +1,27 @@
 angular.module('myApp', [])
-	.controller('myReddit', function($scope){
-		$scope.range = 5;
-		$scope.reddit = [
-						  {
-						    comment: "I really like cheese",
-						    votes: 10
-						  },
-						  {
-						    comment: "I'm not so sure about edam though",
-						    votes: 2
-						  },
-						  {
-						    comment: "Gouda properly rocks!",
-						    votes: 4
-						  },
-						  {
-						    comment: "I quite like a bit of mild cheddar",
-						    votes: 19
-						  },
-						  {
-						    comment: "Cheese is just old milk",
-						    votes: 8
-						  }
-						];
-	})
-	.filter('minVote', function(){
-		var filter = function(array, number) {
-			return array.filter(function(arrayItem){
-				return arrayItem.votes >= number;
-			});
+	.controller('myFlickrFeed', function($scope, flickrService){
+
+		$scope.images = {};
+		$scope.searchTerm = 'cat';
+
+		$scope.getFlickr = function() {
+			flickrService.get($scope.searchTerm)
+				.success(function(data){
+					$scope.images = data.items;
+				});
 		}
-		return filter;
+
+		$scope.$watch('searchTerm', function() {
+			$scope.getFlickr();
+		});
+	})
+
+	
+	.service('flickrService', function($http){
+		var service = {
+			get: function(term){
+				return $http.jsonp('http://api.flickr.com/services/feeds/photos_public.gne?tags='+term+'&tagmode=any&format=json&jsoncallback=JSON_CALLBACK');
+			}
+		}
+		return service;
 	})

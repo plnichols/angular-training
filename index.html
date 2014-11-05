@@ -24,13 +24,9 @@
 
         <br>
 
-        <table class="table">
-            <tr ng-repeat="item in reddit | minVote:range">
-                <td>{{$index}}</td>
-                <td>{{item.comment}}</td>
-                <td>{{item.votes}}</td>
-            </tr>
-        </table>
+        <div class="flickr">
+            <img ng-repeat="image in images" class="flickr__item" src="{{image.media.m}}" alt="{{image.title}}" title="{{image.title}}" />
+        </div>
 
         <!-- Scripts -->
         <script src="js/libs/angular.js"></script>
