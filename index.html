@@ -17,22 +17,9 @@
         <div class="container-fluid" ng-controller="myPerson">
             <div class="row">
                 <div class="col-xs-12">
-                    <label>Name <input type="text" ng-model="person.name" class="form-control" /></label>
-                    <label>Avatar 
-                        <select ng-model="person.image" class="form-control">
-                            <option value="default-avatar">Default</option>
-                            <option value="avatar1">Avatar 1</option>
-                            <option value="avatar2">Avatar 2</option>
-                            <option value="avatar3">Avatar 3</option>
-                            <option value="avatar4">Avatar 4</option>
-                        </select>
-                    </label>
-
-                    <div>
-                        <img class="pull-left" width="60" src="images/{{person.image}}.png" title="{{person.name}}" alt="{{person.name}}">
-                        <h3>{{person.name}}</h3>
-                        <p>{{person.description}}</p>
-                    </div>
+                    <div profile-directive></div>
+                    <div profile-directive></div>
+                    <div profile-directive></div>
                 </div>
 
                 <div class="col-xs-12">
