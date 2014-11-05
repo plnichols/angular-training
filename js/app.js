@@ -1,5 +1,6 @@
 angular.module('myApp', [])
 	.controller('myReddit', function($scope){
+		$scope.range = 5;
 		$scope.reddit = [
 						  {
 						    comment: "I really like cheese",
