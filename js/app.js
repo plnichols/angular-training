@@ -1,10 +1,5 @@
-angular.module('myApp', ['ngDialog'])
-	.controller('myPerson', ['$scope', 'ngDialog', function($scope){
-		$scope.person = {};
-		$scope.person.description = "This is my name and an image representing me!";
-		$scope.person.image = "default-avatar";
-	}])
-	.directive('profileDirective', function(){
+angular.module('myApp')
+	.directive('weatherDirective', function(){
 		return {
 			scope: true,
 			templateUrl: 'template-profile.html',
