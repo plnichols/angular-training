@@ -1,0 +1,11 @@
+{
+  "name": "node-training",
+  "version": "0.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.0.0"
+  },
+  "devDependencies": {
+    "express-generator": "^4.9.0"
+  }
+}
