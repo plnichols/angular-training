@@ -2,28 +2,40 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>AngularJS</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/ngDialog.css">
-        <link rel="stylesheet" href="css/ngDialogDefault.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body ng-app="myApp">
+    <body ng-app="myApp" ng-controller="articlesController">
 
-        <div class="container-fluid" ng-controller="myPerson">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
-                    <div profile-directive></div>
-                    <div profile-directive></div>
-                    <div profile-directive></div>
-                </div>
+                    <fieldset>
+                        <legend>Search articles by ID</legend>
+                        <input type="text" ng-model="show_article_num" class="form-control" />
+                        <br>
+                        <button ng-click="getSingleArticle()">Submit</button>
+                    </fieldset>
 
-                <div class="col-xs-12">
-                    <input type="button" value="Show dialog" ng-click="openDialog()" />
+                    <fieldset>
+                        <legend>Create new article</legend>
+                        <input type="text" ng-model="article.title" class="form-control" placeholder="title" />
+                        <br>
+                        <input type="text" ng-model="article.intro" class="form-control" placeholder="intro" />
+                        <br>
+                        <input type="text" ng-model="article.content" class="form-control" placeholder="content" />
+                        <br>
+                        <input type="text" ng-model="article.authorid" class="form-control" placeholder="author id" />
+                        <br>
+                        <button ng-click="createArticle()">Submit</button>
+                    </fieldset>
+
+
+                    <div articles-directive></div>
                 </div>
             </div>
         </div>
@@ -31,6 +43,5 @@
         <!-- Scripts -->
         <script src="js/angular.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/ngDialog.js"></script>
     </body>
 </html>
