@@ -4,44 +4,39 @@
         <meta charset="utf-8">
         <title>AngularJS</title>
         <meta name="description" content="">
+        <base href="/">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body ng-app="myApp" ng-controller="articlesController">
+    <body ng-app="myApp" ng-controller="routingController">
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12">
                     <fieldset>
-                        <legend>Search articles by ID</legend>
-                        <input type="text" ng-model="show_article_num" class="form-control" />
-                        <br>
-                        <button ng-click="getSingleArticle()">Submit</button>
+                        <legend>Menu</legend>
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/contact-us">Contact us</a></li>
+                        </ul>
                     </fieldset>
 
                     <fieldset>
-                        <legend>Create new article</legend>
-                        <input type="text" ng-model="article.title" class="form-control" placeholder="title" />
-                        <br>
-                        <input type="text" ng-model="article.intro" class="form-control" placeholder="intro" />
-                        <br>
-                        <input type="text" ng-model="article.content" class="form-control" placeholder="content" />
-                        <br>
-                        <input type="text" ng-model="article.authorid" class="form-control" placeholder="author id" />
-                        <br>
-                        <button ng-click="createArticle()">Submit</button>
+                        <legend>Content</legend>
+                        <div ng-view></div>
                     </fieldset>
 
 
-                    <div articles-directive></div>
                 </div>
             </div>
         </div>
 
         <!-- Scripts -->
         <script src="js/angular.js"></script>
+        <script src="js/angular-route.js"></script>
         <script src="js/app.js"></script>
     </body>
 </html>

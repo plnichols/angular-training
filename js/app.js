@@ -1,51 +1,30 @@
-angular.module('myApp', [])
+angular.module('myApp', ['ngRoute'])
 
-	.controller('articlesController', function($scope, articlesService){
-		$scope.article = {};
-		$scope.articles = [];
+	.config(function($routeProvider, $locationProvider) {
 
-		articlesService.index().success(function(data){
-			$scope.articles = data;
+		// html5Mode gives you real URL with simple / structure
+		//   - it allows your site to be indexable by Google without any more work needed
+		//   - it doesn't work in IE8
+
+		// without html5Mode, you need # URL
+		//   - it works in IE8
+		//   - site is not crawlable by default
+		//   - you need to use hashbang URL (#!) to make Google crawl escaped fragment
+		//   - that needs server side rendering of these pages
+		$locationProvider.html5Mode(true);
+		
+		$routeProvider
+			.when('/home', {
+			templateUrl: 'home.html'
+		})
+		.when('/about', {
+			templateUrl: 'about.html'
+		})
+		.when('/contact-us', {
+			templateUrl: 'contact-us.html'
 		});
-
-		$scope.getSingleArticle = function(){
-			articlesService.show($scope.show_article_num).success(function(data){
-				$scope.articles = [];
-				$scope.articles.push(data);
-			});
-		}
-
-		$scope.createArticle = function(){
-			articlesService.create($scope.article);
-		}
-
-		$scope.destroyArticle = function(id){
-			articlesService.destroy(id);
-		}
 	})
-	
-	.directive('articlesDirective', function(){
-		return {
-			scope: true,
-			templateUrl: 'article.html'
-		};
-	})
-	
-	.service('articlesService', function($http){
-		var api_url = 'http://simple-api.herokuapp.com/api/v1/articles/';
-	    var service = {
-	      index: function() {
-	        return $http.get(api_url);
-	      },
-	      show: function(id) {
-	        return $http.get(api_url + id);
-	      },
-	      create: function(article) {
-	        return $http.post(api_url + '?title=' + article.title + '&intro=' + article.intro + '&content=' + article.content + '&author_id=' + article.authorid);	      	
-	      },
-	      destroy: function(id) {
-	        return $http.get(api_url + id + '/destroy');	      	
-	      }
-	    }
-		return service;
+
+	.controller('routingController', function($scope){
+		
 	});
