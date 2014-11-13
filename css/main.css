@@ -9,3 +9,42 @@ fieldset {
 img.pull-left {
 	margin: 0 10px 10px 0;
 }
+
+
+ /* contact ---------------------- */
+.view.ng-leave      {
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: slideOutLeft .5s both ease-in;
+    -moz-transform-origin: 50% 50%;
+    -moz-animation: slideOutLeft .5s both ease-in;
+    transform-origin: 50% 50%;
+    animation: slideOutLeft .5s both ease-in;
+}
+.view.ng-enter 		{
+    -webkit-animation:slideInUp 0.5s both ease-in;
+    -moz-animation:slideInUp 0.5s both ease-in;
+    animation:slideInUp 0.5s both ease-in;
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to 		{ transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {
+    to 		{ -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to 		{ -webkit-transform: translateX(-100%); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to 		{ transform: translateX(-100%); }
+}
+@-moz-keyframes slideOutLeft {
+    to 		{ -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to 		{ -webkit-transform: translateX(-100%); }
+}
+
